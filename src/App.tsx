@@ -1,30 +1,13 @@
-import { useEffect, useState } from "react";
+
 import type { Schema } from "../amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
 
 import { useAuthenticator } from '@aws-amplify/ui-react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-const client = generateClient<Schema>();
+import { FileUploader } from "@aws-amplify/ui-react-storage";
 
 function App() {
   const { user, signOut } = useAuthenticator();
-  const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
-
-    
-  function deleteTodo(id: string) {
-    client.models.Todo.delete({ id })
-  }
-
-  useEffect(() => {
-    client.models.Todo.observeQuery().subscribe({
-      next: (data) => setTodos([...data.items]),
-    });
-  }, []);
-
-  function createTodo() {
-    client.models.Todo.create({ content: window.prompt("Todo content") });
-  }
 
   return (
     <main>
@@ -71,15 +54,12 @@ function App() {
     </header>
       <body>
       <h1>{user?.signInDetails?.loginId}'s files</h1>
-      <button onClick={createTodo}>+ new</button>
-      <ul>
-        {todos.map((todo) => ( 
-          <li 
-          onClick={() => deleteTodo(todo.id)}
-          key={todo.id}>{todo.content}</li>
-        ))}
-      </ul>
       <div>
+        <FileUploader
+        acceptedFileTypes={['pdf, docx, doc']}
+        path="public/"
+        maxFileCount={1}
+        />
       </div>
       <button onClick={signOut}>Sign out</button>
       </body>
