@@ -13,7 +13,7 @@ function Upload() {
         if (file) {  // Ensure file is not null before proceeding
             try {
                 await uploadData({
-                    path: `${file.name}`,  // Correct the path to file name
+                    path: `file-submissions/${file.name}`,  // Correct the path to file name
                     data: file,  // Pass the file as the data
                 });
                 console.log('File uploaded successfully');
