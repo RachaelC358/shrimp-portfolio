@@ -1,7 +1,3 @@
-
-import type { Schema } from "../amplify/data/resource";
-import { generateClient } from "aws-amplify/data";
-
 import { useAuthenticator } from '@aws-amplify/ui-react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FileUploader } from "@aws-amplify/ui-react-storage";
