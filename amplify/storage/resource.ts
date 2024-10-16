@@ -1,4 +1,5 @@
 import { defineStorage } from '@aws-amplify/backend';
+import { GlobalVariables } from 'aws-cdk-lib/aws-codepipeline';
 
 export const storage = defineStorage({
   name: 'shrimpStoredFiles',
@@ -8,3 +9,5 @@ export const storage = defineStorage({
     ],
   })
 });
+
+

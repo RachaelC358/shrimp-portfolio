@@ -24,8 +24,6 @@ function App() {
         path: `picture-submissions/${file.name}`,
         data: file,
       })
-        .then((result) => console.log('Upload successful:', result))
-        .catch((error) => console.log('Upload error:', error));
     } else {
       console.error("No file selected for upload.");
     }
