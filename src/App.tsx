@@ -1,34 +1,69 @@
 import { useAuthenticator } from '@aws-amplify/ui-react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FileUploader } from "@aws-amplify/ui-react-storage";
-import React from 'react';
-import { uploadData } from 'aws-amplify/storage';
+import React, { useEffect, useState } from 'react';
+import { uploadData, list } from 'aws-amplify/storage';
+
+interface Photo {
+  key: string; // Adjust based on the structure of your photo objects
+  // Add any other fields you expect in the result
+}
 
 function App() {
   const { user, signOut } = useAuthenticator();
 
-  // Initialize file state to either File or null (not undefined)
+  // Initialize file state and photos state
   const [file, setFile] = React.useState<File | null>(null);
+  const [photos, setPhotos] = useState<Photo[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
+  // Handle file input change
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // Ensure event.target.files is not null and has files
     if (event.target.files && event.target.files[0]) {
       setFile(event.target.files[0]);
     }
   };
 
-  const handleUpload = () => {
-    // Ensure file is not null before attempting upload
+  // Handle file upload
+  const handleUpload = async () => {
     if (file) {
-      uploadData({
-        path: `picture-submissions/${file.name}`,
-        data: file,
-      })
+      try {
+        await uploadData({
+          path: `picture-submissions/${file.name}`,
+          data: file,
+        });
+        console.log("File uploaded successfully.");
+      } catch (error) {
+        console.error("Error uploading file:", error);
+      }
     } else {
       console.error("No file selected for upload.");
     }
   };
 
+  // Fetch photos when the component mounts
+  useEffect(() => {
+    const fetchPhotos = async () => {
+      try {
+        const result = await list({
+          path: 'album/photos/',
+          options: {
+            listAll: true,
+          },
+        });
+        setPhotos(result); // Assuming result is an array of photos
+      } catch (err) {
+        console.error('Error fetching photos:', err);
+        setError('Failed to load photos');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPhotos();
+  }, []);
+
+  // Render the list of photos
   return (
     <main>
       <header>
@@ -72,21 +107,27 @@ function App() {
           </div>
         </nav>
       </header>
-      <div>
-        <FileUploader
-          acceptedFileTypes={['pdf', 'docx', 'doc']}
-          path="public/"
-          maxFileCount={1}
-        />
-      </div>
+
       <div>
         <input type="file" onChange={handleChange} />
-        <button onClick={handleUpload}>
-          Upload
-        </button>
+        <button onClick={handleUpload}>Upload</button>
       </div>
+
       <h1>{user?.signInDetails?.loginId}'s files</h1>
       <button onClick={signOut}>Sign out</button>
+
+      {/* Render loading, error, or list of photos */}
+      {loading && <p>Loading photos...</p>}
+      {error && <p>{error}</p>}
+      {photos.length > 0 ? (
+        <ul>
+          {photos.map((photo, index) => (
+            <li key={index}>{photo.key}</li> // Adjust based on your data structure
+          ))}
+        </ul>
+      ) : (
+        !loading && <p>No photos available.</p>
+      )}
     </main>
   );
 }
