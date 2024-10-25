@@ -3,16 +3,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useEffect, useState } from 'react';
 import { uploadData, list } from 'aws-amplify/storage';
 
+// Adjust the Photo interface based on the structure of items in the result
 interface Photo {
-  key: string; // Adjust based on the structure of your photo objects
-  // Add any other fields you expect in the result
+  key: string; // The key or path of the file
 }
 
 function App() {
   const { user, signOut } = useAuthenticator();
 
   // Initialize file state and photos state
-  const [file, setFile] = React.useState<File | null>(null);
+  const [file, setFile] = useState<File | null>(null);
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -46,12 +46,22 @@ function App() {
     const fetchPhotos = async () => {
       try {
         const result = await list({
-          path: 'album/photos/',
+          path: 'picture-submissions/',
           options: {
             listAll: true,
           },
         });
-        setPhotos(result); // Assuming result is an array of photos
+
+        // Inspect the structure of `result` here
+        // If `result` has a `files` or `Contents` property, use that:
+        const items = result.items || []; // Adjust according to the actual structure
+
+        // Map over `items` to extract photo keys
+        const mappedPhotos: Photo[] = items.map((item: any) => ({
+          key: item.key, // Adjust this based on the actual field name
+        }));
+
+        setPhotos(mappedPhotos);
       } catch (err) {
         console.error('Error fetching photos:', err);
         setError('Failed to load photos');
@@ -63,7 +73,6 @@ function App() {
     fetchPhotos();
   }, []);
 
-  // Render the list of photos
   return (
     <main>
       <header>
