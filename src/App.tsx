@@ -82,7 +82,7 @@ function App() {
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
           <div className="container-fluid">
             <a className="navbar-brand" href="#">
-              <img src="/shrimpLogo.png" alt="Logo" height="35%" width="35%" />
+              <img src="/shrimpLogo.png" alt="Logo" height="100px" width="auto" />
             </a>
             <button
               className="navbar-toggler"
@@ -120,16 +120,20 @@ function App() {
         </nav>
       </header>
 
-      <div className="container">
+      <div className="body-container">
+
 
       <h1>Welcome, {user?.signInDetails?.loginId}</h1>  
 
+      <div className="container flex-direction">
+      <div className="uploads-box">
       <h2>Upload your files here</h2>
       <div>
         <input type="file" onChange={handleChange} />
         <button onClick={handleUpload}>Upload</button>
       </div>
-    
+      </div>
+      <div className="downloads-box">
       <h2>Select a file to download from S3</h2>
 
       {loading && <p>Loading photos...</p>}
@@ -143,6 +147,8 @@ function App() {
       ) : (
         !loading && <p>No photos available.</p>
       )}
+      </div>  
+      </div>  
         <button onClick={signOut}>Sign out</button>
       </div>
     </main>
