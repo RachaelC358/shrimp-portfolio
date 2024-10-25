@@ -1,11 +1,14 @@
 import { useAuthenticator } from '@aws-amplify/ui-react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useEffect, useState } from 'react';
-import { uploadData, getProperties } from 'aws-amplify/storage';
+import { uploadData } from 'aws-amplify/storage';
+import { list } from "aws-amplify/storage";
+
 
 // Adjust the Photo interface based on the structure of items in the result
 interface Photo {
-  key: string; // The key or path of the file
+  path: string,
+  lastModified: string 
 }
 
 function App() {
@@ -57,7 +60,8 @@ function App() {
 
         // Map over `items` to extract photo keys
         const mappedPhotos: Photo[] = items.map((item: any) => ({
-          key: item.key, // Adjust this based on the actual field name
+          path: item.path,
+          lastModified: item.lastModified // Adjust this based on the actual field name
         }));
 
         setPhotos(mappedPhotos);
