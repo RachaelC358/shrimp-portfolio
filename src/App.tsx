@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useEffect, useState } from 'react';
 import { uploadData } from 'aws-amplify/storage';
 import { list } from "aws-amplify/storage";
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 
 // Adjust the Photo interface based on the structure of items in the result
