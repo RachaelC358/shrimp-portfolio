@@ -122,26 +122,28 @@ function App() {
 
       <div className="container">
 
+      <h1>Welcome, {user?.signInDetails?.loginId}</h1>  
+
+      <h2>Upload your files here</h2>
       <div>
         <input type="file" onChange={handleChange} />
         <button onClick={handleUpload}>Upload</button>
       </div>
+    
+      <h2>Select a file to download from S3</h2>
 
-      <h1>{user?.signInDetails?.loginId}'s files</h1>
-      <button onClick={signOut}>Sign out</button>
-
-      {/* Render loading, error, or list of photos */}
       {loading && <p>Loading photos...</p>}
       {error && <p>{error}</p>}
       {photos.length > 0 ? (
         <ul>
           {photos.map((photo, index) => (
-            <li key={index}>{photo.path}</li> // Adjust based on your data structure
+            <li key={index}>{photo.path}</li>
           ))}
         </ul>
       ) : (
         !loading && <p>No photos available.</p>
       )}
+        <button onClick={signOut}>Sign out</button>
       </div>
     </main>
   );
