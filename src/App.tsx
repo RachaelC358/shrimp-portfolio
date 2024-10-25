@@ -80,7 +80,7 @@ function App() {
   return (
     <main>
       <header>
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <nav className="navbar navbar-expand-sm bg-body-tertiary navbar-custom">
           <div className="container-fluid">
             <a className="navbar-brand" href="#">
               <img src="/shrimpLogo.png" alt="Logo" height="100px" width="auto" />
@@ -102,8 +102,9 @@ function App() {
                   <a className="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">Link</a>
+                  <a className="nav-link" href="#" onClick={signOut}>Sign Out</a>
                 </li>
+                {/*
                 <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Dropdown
@@ -115,6 +116,7 @@ function App() {
                     <li><a className="dropdown-item" href="#">Something else here</a></li>
                   </ul>
                 </li>
+                */}
               </ul>
             </div>
           </div>
@@ -150,7 +152,6 @@ function App() {
       )}
       </div>  
       </div>  
-        <button onClick={signOut}>Sign out</button>
       </div>
     </main>
   );
