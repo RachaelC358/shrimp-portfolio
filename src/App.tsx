@@ -1,7 +1,7 @@
 import { useAuthenticator } from '@aws-amplify/ui-react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useEffect, useState } from 'react';
-import { uploadData, list } from 'aws-amplify/storage';
+import { uploadData, getProperties } from 'aws-amplify/storage';
 
 // Adjust the Photo interface based on the structure of items in the result
 interface Photo {
@@ -47,9 +47,8 @@ function App() {
       try {
         const result = await list({
           path: 'picture-submissions/',
-          options: {
-            listAll: true,
-          },
+          options: {listAll:true},
+          // Alternatively, path: ({ identityId }) => `album/{identityId}/1.jpg`
         });
 
         // Inspect the structure of `result` here
@@ -117,6 +116,8 @@ function App() {
         </nav>
       </header>
 
+      <div className="container">
+
       <div>
         <input type="file" onChange={handleChange} />
         <button onClick={handleUpload}>Upload</button>
@@ -131,12 +132,13 @@ function App() {
       {photos.length > 0 ? (
         <ul>
           {photos.map((photo, index) => (
-            <li key={index}>{photo.key}</li> // Adjust based on your data structure
+            <li key={index}>{photo.path}</li> // Adjust based on your data structure
           ))}
         </ul>
       ) : (
         !loading && <p>No photos available.</p>
       )}
+      </div>
     </main>
   );
 }
