@@ -126,7 +126,7 @@ function App() {
       <div className="body-container">
 
       <div className="greeting">        
-      <h2>Welcome, {user?.signInDetails?.loginId}</h2>  
+      <h3>Welcome, {user?.signInDetails?.loginId}</h3>  
       </div> 
       <div className="container flex-direction">
       <div className="uploads-box">

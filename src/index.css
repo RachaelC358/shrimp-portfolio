@@ -126,7 +126,7 @@ span{
 
 .greeting {
   margin-left: 12px;
-  max-width: 335px;
+  min-height: 28px;
 }
 
 .navbar-zero-margin {
