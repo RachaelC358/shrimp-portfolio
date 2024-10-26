@@ -76,6 +76,10 @@ a {
 .container{
   display:inline-flex;
   flex-wrap:wrap;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh; /* Make sure the parent container takes full height */
+  margin: 0;
 }
 .flex-direction{
   flex-direction:row;
@@ -126,7 +130,14 @@ span{
 
 .greeting {
   margin-left: 12px;
+  text-align: center;
   min-height: 28px;
+}
+
+.page-header {
+  margin-left: 12px;
+  text-align: center;
+  min-height: 44px;
 }
 
 .navbar-zero-margin {
@@ -135,5 +146,9 @@ span{
 
 .navbar-nav {
   margin-bottom: 8px!important;
+}
+
+.nav-link {
+  color: red;
 }
 

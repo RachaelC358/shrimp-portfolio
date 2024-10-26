@@ -97,12 +97,12 @@ function App() {
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li className="nav-item">
                   <a className="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#" onClick={signOut}>Sign Out</a>
+                  <a className="nav-link" href="#" onClick={signOut}>Logout</a>
                 </li>
                 {/*
                 <li className="nav-item dropdown">
@@ -125,8 +125,12 @@ function App() {
 
       <div className="body-container">
 
+      <div className='page-header'>
+        <h1>Secure File Storage</h1>
+      </div>  
+
       <div className="greeting">        
-      <h3>Welcome, {user?.signInDetails?.loginId}</h3>  
+      <h3>Welcome, {user?.signInDetails?.loginId}!</h3>  
       </div> 
       <div className="container flex-direction">
       <div className="uploads-box">
