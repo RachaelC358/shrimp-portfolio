@@ -2,12 +2,6 @@
   font-family: 'Montserrat', sans-serif;
 } 
 
-/* main {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-} */
-
 .navbar-custom {
   color: #FFFFFF !important;
   background-color: #FFFFFF !important;
@@ -16,12 +10,12 @@
 }
 
 .navbar-border {
-  height: 60px; /* Height of the slice you want */
+  height: 60px; 
   background-image: 
-    linear-gradient(to bottom, rgba(255, 255, 255, 0) 1%, rgba(255, 255, 255, 1)), /* Gradient that fades to white */
-    url('blue.jpg'); /* Use your actual image path */
-  background-size: cover; /* Ensure the image covers the whole div */
-  background-position: center top; /* Position to the top of the image */
+    linear-gradient(to bottom, rgba(255, 255, 255, 0) 1%, rgba(255, 255, 255, 1)), 
+    url('/blue.jpg'); 
+  background-size: cover;
+  background-position: center top; 
   background-repeat: no-repeat;
 }
 button {
