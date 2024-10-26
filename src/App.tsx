@@ -134,14 +134,16 @@ function App() {
       </div> 
       <div className="container flex-direction">
       <div className="uploads-box">
-      <h2>Upload your files here</h2>
+      <h2>Upload Files</h2>
+      <p>Select a file to upload securely</p>
       <div>
         <input type="file" onChange={handleChange} />
+        <p>Max size: 10MB. Allowed types: PDF, DOCX, JPG</p>
         <button onClick={handleUpload}>Upload</button>
       </div>
       </div>
       <div className="downloads-box">
-      <h2>Select a file to download from S3</h2>
+      <h2>Stored Files</h2>
 
       {loading && <p>Loading photos...</p>}
       {error && <p>{error}</p>}

@@ -71,6 +71,7 @@ a {
 
 .body-container {
   align-items: center;
+  background-color: lightsalmon;
 }
 
 .container {
@@ -85,7 +86,7 @@ a {
 }
 .uploads-box{
   background-color:#fff;
-  width:335px;
+  min-width:335px;
   height:300px;
   border:1px #1a1a1a;
   padding: 12px;
@@ -93,7 +94,7 @@ a {
 
 .downloads-box{
   background-color:#fff;
-  max-width:335x;
+  min-width:335x;
   height:300px;
   border:1px #1a1a1a;
   padding: 12px;
@@ -117,7 +118,7 @@ span{
     border:1px solid black;
   }
   .downloads-box{
-    max-width:335px;
+    min-width:335px;
     height:300px;
     border:1px solid black;
   }
