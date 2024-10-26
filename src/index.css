@@ -73,14 +73,13 @@ a {
   align-items: center;
 }
 
-.container{
-  display:inline-flex;
-  flex-wrap:wrap;
+.container {
   display: flex;
-  justify-content: center;
-  min-height: 100vh; /* Make sure the parent container takes full height */
-  margin: 0;
+  flex-wrap: wrap;
+  justify-content: center; /* Center items inside the container */
+  gap: 20px; /* Optional: add some spacing between upload and download sections */
 }
+
 .flex-direction{
   flex-direction:row;
 }
