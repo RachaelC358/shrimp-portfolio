@@ -1,13 +1,6 @@
-/* body {
-  margin: 0;
-  background: linear-gradient(180deg, rgb(117, 81, 194), rgb(255, 255, 255));
-  display: flex;
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  height: 100vh;
-  width: 100vw;
-  justify-content: center;
-  align-items: center;
-} */
+ body {
+  font-family: 'Montserrat', sans-serif;
+} 
 
 /* main {
   display: flex;
@@ -18,6 +11,16 @@
 .navbar-custom {
   color: #FFFFFF !important;
   background-color: #FFFFFF !important;
+
+  padding: 0px!important;
+}
+
+.navbar-border {
+  height: 20px; /* Height of the slice you want */
+  background-image: url('blue.jpg'); /* Use your actual image path */
+  background-size: cover; /* Ensure the image covers the whole div */
+  background-position: center top; /* Position to the top of the image */
+  background-repeat: no-repeat;
 }
 
 button {
@@ -70,8 +73,19 @@ a {
 }
 
 .body-container {
+  border-top: 3px #1a1a1a;
   align-items: center;
-  background-color: lightsalmon;
+  background-color: lightskyblue;
+}
+
+.top-body {
+  background-color: white;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.bottom-body {
+  background-color: cornflowerblue;
 }
 
 .container {
@@ -87,6 +101,7 @@ a {
 .uploads-box{
   background-color:#fff;
   min-width:335px;
+  max-width: 335px;
   height:300px;
   border:1px #1a1a1a;
   padding: 12px;
@@ -118,12 +133,12 @@ span{
     border:1px solid black;
   }
   .downloads-box{
-    min-width:335px;
+    width:335px;
     height:300px;
     border:1px solid black;
   }
   .downloads-box span{
-    line-height:300px;
+    line-height:335px;
     border:1px solid black;
   } 
 }
@@ -132,6 +147,7 @@ span{
   margin-left: 12px;
   text-align: center;
   min-height: 28px;
+  font: monsterrat;
 }
 
 .page-header {
@@ -145,7 +161,9 @@ span{
 }
 
 .navbar-nav {
-  margin-bottom: 8px!important;
+  margin-bottom: 0px!important;
+  margin-top: 0px!important;
+  padding: 0px!important;
 }
 
 .nav-link {

@@ -117,16 +117,18 @@ function App() {
           </div>
         </nav>
       </header>
-
+      <div className="navbar-border"></div>
       <div className="body-container">
+        <div className="top-body">
         <div className='page-header'>
-          <h1>Secure File Storage</h1>
+          <h1>Your Home for Secure File Storage</h1>
         </div>  
 
         <div className="greeting">        
-          <h3>Welcome, {user?.signInDetails?.loginId}!</h3>  
+          <p>Welcome, {user?.signInDetails?.loginId}!</p>  
         </div> 
-
+        </div>
+        <div className="bottom-body">
         <div className="container flex-direction">
           <div className="uploads-box">
             <h2>Upload Files</h2>
@@ -153,6 +155,7 @@ function App() {
             )}
           </div>  
         </div>  
+      </div>
       </div>
     </main>
   );
