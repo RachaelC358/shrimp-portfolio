@@ -82,8 +82,8 @@ function App() {
       <header>
         <nav className="navbar navbar-expand-sm bg-body-tertiary navbar-custom">
           <div className="container-fluid">
-            <a className="navbar-brand" href="#">
-              <img src="/shrimpLogo.png" alt="Logo" height="100px" width="auto" />
+            <a className="navbar-brand navbar-zero-margin" href="#">
+              <img src="/shrimpLogo4.png" alt="Logo" height="100px" width="auto" />
             </a>
             <button
               className="navbar-toggler"
@@ -125,9 +125,9 @@ function App() {
 
       <div className="body-container">
 
-
-      <h1>Welcome, {user?.signInDetails?.loginId}</h1>  
-
+      <div className="greeting">        
+      <h2>Welcome, {user?.signInDetails?.loginId}</h2>  
+      </div> 
       <div className="container flex-direction">
       <div className="uploads-box">
       <h2>Upload your files here</h2>

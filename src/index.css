@@ -82,18 +82,18 @@ a {
 }
 .uploads-box{
   background-color:#fff;
-  width:325px;
+  width:335px;
   height:300px;
   border:1px #1a1a1a;
-  padding: 16px;
+  padding: 12px;
 }
 
 .downloads-box{
   background-color:#fff;
-  max-width:325x;
+  max-width:335x;
   height:300px;
   border:1px #1a1a1a;
-  padding: 16px;
+  padding: 12px;
 }
 
 span{
@@ -104,23 +104,36 @@ span{
     text-align: center;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 400px) {
   .flex-direction{
   flex-direction:column;
   }
-.uploads-box{
-  width:325px;
-  height:300px;
-  border:1px solid black;
+  .uploads-box{
+    width:335px;
+    height:300px;
+    border:1px solid black;
   }
   .downloads-box{
-    max-width:325px;
+    max-width:335px;
     height:300px;
     border:1px solid black;
   }
   .downloads-box span{
     line-height:300px;
     border:1px solid black;
-  }
-
+  } 
 }
+
+.greeting {
+  margin-left: 12px;
+  max-width: 335px;
+}
+
+.navbar-zero-margin {
+  margin-right: 0px;
+}
+
+.navbar-nav {
+  margin-bottom: 8px!important;
+}
+
