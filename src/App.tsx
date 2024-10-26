@@ -132,7 +132,7 @@ function App() {
         <div className="container flex-direction">
           <div className="uploads-box">
             <h2>Upload Files</h2>
-            <p>Select a file to upload securely</p>
+            <p>Select a file to upload securely.</p>
             <div>
               <input type="file" onChange={handleChange} />
               <p>Max size: 10MB. Allowed types: PDF, DOCX, JPG</p>

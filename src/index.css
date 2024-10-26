@@ -16,13 +16,14 @@
 }
 
 .navbar-border {
-  height: 20px; /* Height of the slice you want */
-  background-image: url('blue.jpg'); /* Use your actual image path */
+  height: 60px; /* Height of the slice you want */
+  background-image: 
+    linear-gradient(to bottom, rgba(255, 255, 255, 0) 1%, rgba(255, 255, 255, 1)), /* Gradient that fades to white */
+    url('blue.jpg'); /* Use your actual image path */
   background-size: cover; /* Ensure the image covers the whole div */
   background-position: center top; /* Position to the top of the image */
   background-repeat: no-repeat;
 }
-
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -75,7 +76,7 @@ a {
 .body-container {
   border-top: 3px #1a1a1a;
   align-items: center;
-  background-color: lightskyblue;
+  background-color: white;
 }
 
 .top-body {
@@ -85,7 +86,7 @@ a {
 }
 
 .bottom-body {
-  background-color: cornflowerblue;
+  background-color: white;
 }
 
 .container {
@@ -93,26 +94,24 @@ a {
   flex-wrap: wrap;
   justify-content: center; /* Center items inside the container */
   gap: 20px; /* Optional: add some spacing between upload and download sections */
+  text-align: center;
 }
 
 .flex-direction{
-  flex-direction:row;
-}
-.uploads-box{
-  background-color:#fff;
-  min-width:335px;
-  max-width: 335px;
-  height:300px;
-  border:1px #1a1a1a;
+  display: flex;
+  gap: 20px; /* Add space between boxes */
   padding: 12px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
-.downloads-box{
-  background-color:#fff;
-  min-width:335x;
-  height:300px;
-  border:1px #1a1a1a;
+.uploads-box, .downloads-box {
+  background-color: #fff;
+  min-height: 300px;
+  border: 1px solid #1a1a1a;
   padding: 12px;
+  flex: 1; /* Make boxes expand equally in width */
+  min-width: 335px;
+  border-radius: 12px; 
 }
 
 span{
@@ -121,6 +120,12 @@ span{
     display: block;
     line-height: 132px;
     text-align: center;
+}
+
+@media screen and (min-width: 600px) {
+  .uploads-box, .downloads-box {
+    max-width: 100%; /* Allow boxes to take up full width of container */
+  }
 }
 
 @media screen and (max-width: 400px) {
