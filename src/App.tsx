@@ -14,6 +14,9 @@ interface Photo {
 
 function App() {
   const { user, signOut } = useAuthenticator();
+  
+  // Toggle switch for S3 requests
+  const S3_REQUESTS_ENABLED = false; // Set this to true to enable requests
 
   // Initialize file state and photos state
   const [file, setFile] = useState<File | null>(null);
@@ -30,47 +33,52 @@ function App() {
 
   // Handle file upload
   const handleUpload = async () => {
-    if (file) {
-      try {
-        await uploadData({
-          path: `picture-submissions/${file.name}`,
-          data: file,
-        });
-        console.log("File uploaded successfully.");
-      } catch (error) {
-        console.error("Error uploading file:", error);
+    if (S3_REQUESTS_ENABLED) { // Check if requests are enabled
+      if (file) {
+        try {
+          await uploadData({
+            path: `picture-submissions/${file.name}`,
+            data: file,
+          });
+          console.log("File uploaded successfully.");
+        } catch (error) {
+          console.error("Error uploading file:", error);
+        }
+      } else {
+        console.error("No file selected for upload.");
       }
     } else {
-      console.error("No file selected for upload.");
+      console.log("S3 requests are disabled.");
     }
   };
 
   // Fetch photos when the component mounts
   useEffect(() => {
     const fetchPhotos = async () => {
-      try {
-        const result = await list({
-          path: 'picture-submissions/',
-          options: {listAll:true},
-          // Alternatively, path: ({ identityId }) => `album/{identityId}/1.jpg`
-        });
+      if (S3_REQUESTS_ENABLED) { // Check if requests are enabled
+        try {
+          const result = await list({
+            path: 'picture-submissions/',
+            options: { listAll: true },
+          });
 
-        // Inspect the structure of `result` here
-        // If `result` has a `files` or `Contents` property, use that:
-        const items = result.items || []; // Adjust according to the actual structure
+          const items = result.items || []; // Adjust according to the actual structure
 
-        // Map over `items` to extract photo keys
-        const mappedPhotos: Photo[] = items.map((item: any) => ({
-          path: item.path,
-          lastModified: item.lastModified // Adjust this based on the actual field name
-        }));
+          const mappedPhotos: Photo[] = items.map((item: any) => ({
+            path: item.path,
+            lastModified: item.lastModified,
+          }));
 
-        setPhotos(mappedPhotos);
-      } catch (err) {
-        console.error('Error fetching photos:', err);
-        setError('Failed to load photos');
-      } finally {
+          setPhotos(mappedPhotos);
+        } catch (err) {
+          console.error('Error fetching photos:', err);
+          setError('Failed to load photos');
+        } finally {
+          setLoading(false);
+        }
+      } else {
         setLoading(false);
+        console.log("S3 requests are disabled.");
       }
     };
 
@@ -104,19 +112,6 @@ function App() {
                 <li className="nav-item">
                   <a className="nav-link" href="#" onClick={signOut}>Logout</a>
                 </li>
-                {/*
-                <li className="nav-item dropdown">
-                  <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown
-                  </a>
-                  <ul className="dropdown-menu">
-                    <li><a className="dropdown-item" href="#">Action</a></li>
-                    <li><a className="dropdown-item" href="#">Another action</a></li>
-                    <li><hr className="dropdown-divider" /></li>
-                    <li><a className="dropdown-item" href="#">Something else here</a></li>
-                  </ul>
-                </li>
-                */}
               </ul>
             </div>
           </div>
@@ -124,40 +119,40 @@ function App() {
       </header>
 
       <div className="body-container">
+        <div className='page-header'>
+          <h1>Secure File Storage</h1>
+        </div>  
 
-      <div className='page-header'>
-        <h1>Secure File Storage</h1>
-      </div>  
+        <div className="greeting">        
+          <h3>Welcome, {user?.signInDetails?.loginId}!</h3>  
+        </div> 
 
-      <div className="greeting">        
-      <h3>Welcome, {user?.signInDetails?.loginId}!</h3>  
-      </div> 
-      <div className="container flex-direction">
-      <div className="uploads-box">
-      <h2>Upload Files</h2>
-      <p>Select a file to upload securely</p>
-      <div>
-        <input type="file" onChange={handleChange} />
-        <p>Max size: 10MB. Allowed types: PDF, DOCX, JPG</p>
-        <button onClick={handleUpload}>Upload</button>
-      </div>
-      </div>
-      <div className="downloads-box">
-      <h2>Stored Files</h2>
+        <div className="container flex-direction">
+          <div className="uploads-box">
+            <h2>Upload Files</h2>
+            <p>Select a file to upload securely</p>
+            <div>
+              <input type="file" onChange={handleChange} />
+              <p>Max size: 10MB. Allowed types: PDF, DOCX, JPG</p>
+              <button onClick={handleUpload}>Upload</button>
+            </div>
+          </div>
 
-      {loading && <p>Loading photos...</p>}
-      {error && <p>{error}</p>}
-      {photos.length > 0 ? (
-        <ul>
-          {photos.map((photo, index) => (
-            <li key={index}>{photo.path}</li>
-          ))}
-        </ul>
-      ) : (
-        !loading && <p>No photos available.</p>
-      )}
-      </div>  
-      </div>  
+          <div className="downloads-box">
+            <h2>Stored Files</h2>
+            {loading && <p>Loading photos...</p>}
+            {error && <p>{error}</p>}
+            {photos.length > 0 ? (
+              <ul>
+                {photos.map((photo, index) => (
+                  <li key={index}>{photo.path}</li>
+                ))}
+              </ul>
+            ) : (
+              !loading && <p>No photos available.</p>
+            )}
+          </div>  
+        </div>  
       </div>
     </main>
   );
