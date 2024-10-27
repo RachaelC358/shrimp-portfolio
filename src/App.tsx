@@ -14,9 +14,13 @@ interface Photo {
 function App() {
   const S3_REQUESTS_ENABLED = true;
   const [file, setFile] = useState<File | null>(null);
-  const [photos, setPhotos] = useState<Photo[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+  //const [photos, setPhotos] = useState<Photo[]>([]);
+  //const [loading, setLoading] = useState<boolean>(true);
+  //const [error, setError] = useState<string | null>(null);
+
+  const [setPhotos] = useState<Photo[]>([]);
+  const [setLoading] = useState<boolean>(true);
+  const [setError] = useState<string | null>(null);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
