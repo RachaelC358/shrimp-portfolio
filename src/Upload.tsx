@@ -13,9 +13,9 @@ function Upload() {
 
     const handleUpload = async () => {
         if (file && user) {  // Ensure file is not null and user is authenticated
-            const userFolder = user?.signInDetails?.loginId; // Use user's unique identifier (Cognito sub)
-            const filePath = `file-submissions/${userFolder}/${file.name}`; // Path includes user folder
-
+            const userFolder = user.userId; // Use user's unique identifier (Cognito sub)
+            const filePath = `picture-submissions/${userFolder}/${file.name}`; // Path includes user folder
+    
             try {
                 await uploadData({
                     path: filePath,  // Upload to user-specific folder
@@ -29,7 +29,7 @@ function Upload() {
             alert('Please select a file to upload and ensure you are logged in');
         }
     };
-
+    
     return (
         <div>
             <input type="file" onChange={handleChange} />

@@ -152,7 +152,7 @@ function App() {
                           </div>
 
                           <div className="downloads-box">
-                            <h2>Stored Files</h2>
+                            <h2>Stored Files</h2> {/*
                             {loading && <p>Loading photos...</p>}
                             {error && <p>{error}</p>}
                             {photos.length > 0 ? (
@@ -163,7 +163,7 @@ function App() {
                               </ul>
                             ) : (
                               !loading && <p>No photos available.</p>
-                            )}
+                            )}*/}
                           </div>  
                         </div>  
                       </div>
