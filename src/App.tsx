@@ -136,7 +136,7 @@ function App() {
                           <h1>Your Home for Secure File Storage</h1>
                         </div>
                         <div className="greeting">        
-                          <p>Welcome, {user.username}!</p>  
+                          <p>Welcome, {user?.signInDetails?.loginId}!</p>  
                         </div> 
                       </div>
                       <div className="bottom-body">
