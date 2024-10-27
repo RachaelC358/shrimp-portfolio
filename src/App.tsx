@@ -12,7 +12,7 @@ interface Photo {
 }
 
 function App() {
-  const S3_REQUESTS_ENABLED = false;
+  const S3_REQUESTS_ENABLED = true;
   const [file, setFile] = useState<File | null>(null);
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
