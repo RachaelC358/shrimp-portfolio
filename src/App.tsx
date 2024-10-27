@@ -111,7 +111,7 @@ function App() {
                     </>
                   ) : (
                     <li className="nav-item">
-                      <Link className="nav-link" to="/account">Login/Sign up</Link>
+                      <Link className="nav-link active" to="/account">Login/Sign up</Link>
                     </li>
                   )}
                 </ul>
@@ -182,14 +182,13 @@ function App() {
   );
 }
 
-// LogoutLink component to handle the logout functionality
 const LogoutLink = () => {
-  const { signOut } = useAuthenticator(); // This will now work because it's used inside the Authenticator
+  const { signOut } = useAuthenticator();
 
   return (
     <li className="nav-item">
       <a className="nav-link" href="#" onClick={async (e) => {
-        e.preventDefault(); // Prevent default anchor behavior
+        e.preventDefault(); 
         await signOut();
       }}>
         Logout

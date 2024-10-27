@@ -171,11 +171,13 @@ span{
 
 .home-paragraph {
   text-align:center;
+  align-items: center;
 }
 
 .section {
   padding-left: 30px;
   padding-right: 30px;
+  justify-content: center;
 }
 
 .page-header-about {
@@ -183,4 +185,34 @@ span{
   text-align: center;
   min-height: 44px;
 }
+
+.about-section-title {
+  padding-top: 30px;
+  padding-bottom: 3px;
+}
+
+@media screen and (min-width: 600px) {
+  .home-paragraph{
+    padding-left: 150px;
+    padding-right: 150px; 
+  }
+}
+
+.bullet-group{
+  max-width:400px;
+  text-align: left;
+}
+
+.bullet-container {
+  display: flex;
+  flex-direction: column; /* Stacks the list items vertically */
+  align-items: center; /* Centers content horizontally */
+  justify-content: center;
+}
+
+.info-container {
+  text-align: left;
+}
+
+
 

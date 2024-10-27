@@ -11,42 +11,48 @@ const Home: React.FC = () => {
       </div>
       </div>
       <div className="home-paragraph section">
-        <p>This project was built using AWS Amplify, React, Vite, and Typescript. AWS S3 was used for file storage and IAM was used for access policies. The navbar is a customized Bootstrap library component.</p>
-        <p>I chose this project to learn more about cloud services and practice creating secure applications while showcaseing my ability to create user-friendly websites with clean and functional designs. </p>
-        <p>I learned how to create user roles and policies in AWS and set up bucket policies in S3. Amplify made setting up user authentication and running deployments a breeze.</p>
-        <h4>Focus on Security</h4> 
-
+        <div className='info-container'>
+        <p>I'm Rachael Carpenter, full stack software engineer, and this is my file storage web app project! I made it to build on my practical experience with AWS while showcaseing my ability to 
+            create user-friendly websites with clean and functional designs. Click the 'Login/Sign Up' button at the top of this page to try it out! </p>
+            </div>
+            <div className='about-section-title'>
+  <h3>Responsive Page Designs</h3> 
+  </div>
+  <p>This site displays beautifully on both mobile and desktop screen sizes.</p>
+           
+        <div className='about-section-title'>
+        <h3>Focus on Security</h3> 
+        </div>
       <ul>
     
     <li><strong>Data Encryption:</strong>
-      
+    <div className='info-container'>
         <li>All files are protected using AWS S3’s server-side encryption, applying advanced encryption standards to data at rest. Data is transmitted securely via HTTPS, preventing unauthorized access during upload and download.</li>
-      
+        </div>
     </li>
 
     <li><strong>Access Control:</strong>
-      
+    <div className='info-container'>
         <li>User access is managed through AWS IAM, allowing only authenticated users to upload or retrieve files.
-       AWS Amplify manages user authentication, securing file access based on user permissions.</li>
-    
-    </li>
-
-    <li><strong>Fine-Grained Access:</strong>
-      
-        <li>Strict bucket policies provide customized, secure access.</li>
-      
+       AWS Amplify manages user authentication, securing file access based on user permissions. Strict S3 bucket policies provide customized, secure access.</li>
+       </div>
     </li>
   </ul>
 
-  <h4>Website Features</h4> 
-  <ul>
-  <li>Mobile First Reactive Design</li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  </ul>
+  <div className='about-section-title'>
+            <h3>Tech Stack</h3>
+            </div>
+            <div className="bullet-container">
+            <div className="bullet-group">
+           
+            <li>Typescript </li>
+            <li>React</li>
+            <li>Bootstrap and custom CSS</li>
+            <li>AWS Amplify</li>
+            <li>AWS S3</li>
+            <li>AWS IAM</li>
+            </div>
+            </div>
 
     </div>
     </div>
