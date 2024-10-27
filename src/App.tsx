@@ -30,7 +30,7 @@ function App() {
       if (file) {
         try {
           await uploadData({
-            path: `picture-submissions/${file.name}`,
+            path: `picture-submissions/${user.userId}/${file.name}`,
             data: file,
           });
           console.log("File uploaded successfully.");
