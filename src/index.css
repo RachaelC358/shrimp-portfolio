@@ -71,6 +71,7 @@ a {
   border-top: 3px #1a1a1a;
   align-items: center;
   background-color: white;
+  text-align: center;
 }
 
 .top-body {
@@ -146,7 +147,6 @@ span{
   margin-left: 12px;
   text-align: center;
   min-height: 28px;
-  font: monsterrat;
 }
 
 .page-header {
@@ -167,5 +167,20 @@ span{
 
 .nav-link {
   color: red;
+}
+
+.home-paragraph {
+  text-align:center;
+}
+
+.section {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.page-header-about {
+  margin-left: 12px;
+  text-align: center;
+  min-height: 44px;
 }
 

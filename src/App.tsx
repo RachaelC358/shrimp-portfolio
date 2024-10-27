@@ -100,12 +100,12 @@ function App() {
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                   <li className="nav-item">
-                    <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+                    <Link className="nav-link active" aria-current="page" to="/">About</Link>
                   </li>
                   {user ? (
                     <>
                       <li className="nav-item">
-                        <Link className="nav-link" to="/account">My Files</Link>
+                        <Link className="nav-link active" to="/account">My Files</Link>
                       </li>
                       <LogoutLink />
                     </>
