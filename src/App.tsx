@@ -128,7 +128,7 @@ function App() {
             path="/account"
             element={
               <Authenticator>
-                {({ signOut, user }) => (
+                {({ user }) => (
                   user ? (
                     <div className="body-container">
                       <div className="top-body">
