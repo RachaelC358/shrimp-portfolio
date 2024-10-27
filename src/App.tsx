@@ -13,14 +13,11 @@ interface Photo {
 
 function App() {
   const S3_REQUESTS_ENABLED = true;
+  const DOWNLOADS_ENABLED = false;
   const [file, setFile] = useState<File | null>(null);
-  //const [photos, setPhotos] = useState<Photo[]>([]);
-  //const [loading, setLoading] = useState<boolean>(true);
-  //const [error, setError] = useState<string | null>(null);
-
-  const [setPhotos] = useState<Photo[]>([]);
-  const [setLoading] = useState<boolean>(true);
-  const [setError] = useState<string | null>(null);
+  const [photos, setPhotos] = useState<Photo[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
@@ -50,7 +47,7 @@ function App() {
 
   useEffect(() => {
     const fetchPhotos = async () => {
-      if (S3_REQUESTS_ENABLED) {
+      if (DOWNLOADS_ENABLED) {
         try {
           const result = await list({
             path: 'picture-submissions/',
@@ -67,13 +64,11 @@ function App() {
         } catch (err) {
           console.error('Error fetching photos:', err);
           setError('Failed to load photos');
-        } finally {
-          setLoading(false);
         }
       } else {
-        setLoading(false);
         console.log("S3 requests are disabled.");
       }
+      setLoading(false); // Ensure loading is set to false after fetch
     };
 
     fetchPhotos();
@@ -156,7 +151,7 @@ function App() {
                           </div>
 
                           <div className="downloads-box">
-                            <h2>Stored Files</h2> {/*
+                            <h2>Stored Files</h2>
                             {loading && <p>Loading photos...</p>}
                             {error && <p>{error}</p>}
                             {photos.length > 0 ? (
@@ -167,7 +162,7 @@ function App() {
                               </ul>
                             ) : (
                               !loading && <p>No photos available.</p>
-                            )}*/}
+                            )}
                           </div>  
                         </div>  
                       </div>
