@@ -1,7 +1,7 @@
 import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useEffect, useState } from 'react';
-import { uploadData, list } from 'aws-amplify/storage';
+import { uploadData, list, getUrl } from 'aws-amplify/storage';
 import { BrowserRouter as Router, Route, Routes, Navigate, Link } from 'react-router-dom';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Home from './Home';
@@ -9,11 +9,12 @@ import Home from './Home';
 interface Photo {
   path: string;
   lastModified: string;
+  downloadUrl: string; // Add downloadUrl property
 }
 
 function App() {
   const S3_REQUESTS_ENABLED = true;
-  const DOWNLOADS_ENABLED = false;
+  const DOWNLOADS_ENABLED = true; // Enable downloads
   const [file, setFile] = useState<File | null>(null);
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -45,36 +46,52 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    const fetchPhotos = async () => {
-      if (DOWNLOADS_ENABLED) {
-        try {
-          const result = await list({
-            path: 'picture-submissions/',
-            options: { listAll: true },
-          });
-
-          const items = result.items || [];
-          const mappedPhotos: Photo[] = items.map((item: any) => ({
-            path: item.path,
-            lastModified: item.lastModified,
-          }));
-
-          setPhotos(mappedPhotos);
-        } catch (err) {
-          console.error('Error fetching photos:', err);
-          setError('Failed to load photos');
-        }
-      } else {
-        console.log("S3 requests are disabled.");
-      }
-      setLoading(false); // Ensure loading is set to false after fetch
-    };
-
-    fetchPhotos();
-  }, []);
-
   const { user } = useAuthenticator((context) => [context.user]);
+
+    useEffect(() => {
+      const fetchPhotos = async () => {
+        if (DOWNLOADS_ENABLED && user) { // Check if user is defined
+          try {
+            const result = await list({
+              path: `picture-submissions/${user.userId}/`, // Get user's folder
+              options: { listAll: true },
+            });
+    
+            const items = result.items || [];
+            const mappedPhotos: Photo[] = await Promise.all(
+              items.map(async (item: any) => {
+                const linkToStorageFile = await getUrl({
+                  path: `picture-submissions/${user.userId}/`,
+                  // Alternatively, path: ({identityId}) => `album/{identityId}/1.jpg`
+                });
+                  
+                return {
+                  path: item.path,
+                  lastModified: item.lastModified,
+                  downloadUrl: linkToStorageFile.url.toString()
+                };
+              })
+            );
+    
+            setPhotos(mappedPhotos);
+          } catch (err) {
+            console.error('Error fetching photos:', err);
+            setError('Failed to load photos');
+          }
+        } else {
+          console.log("S3 requests are disabled.");
+        }
+        setLoading(false); // Ensure loading is set to false after fetch
+      };
+    
+      if (user) { // Only call fetchPhotos if user is defined
+        fetchPhotos();
+      }
+    }, [user]); // Add user as a dependency
+    
+  
+
+
 
   return (
     <Router>
@@ -151,19 +168,25 @@ function App() {
                           </div>
 
                           <div className="downloads-box">
-                            <h2>Stored Files</h2>
-                            {loading && <p>Loading photos...</p>}
-                            {error && <p>{error}</p>}
-                            {photos.length > 0 ? (
-                              <ul>
-                                {photos.map((photo, index) => (
-                                  <li key={index}>{photo.path}</li>
-                                ))}
-                              </ul>
-                            ) : (
-                              !loading && <p>No photos available.</p>
-                            )}
-                          </div>  
+  <h2>Stored Files</h2>
+  {loading && <p>Loading photos...</p>}
+  {error && <p>{error}</p>}
+  {photos.length > 0 ? (
+    <ul>
+      {photos.map((photo, index) => (
+        <li key={index}>
+          {photo.path} - 
+          <a href={photo.downloadUrl} target="_blank" rel="noreferrer">
+            Download
+          </a>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    !loading && <p>No photos available.</p>
+  )}
+</div>
+
                         </div>  
                       </div>
                     </div>
