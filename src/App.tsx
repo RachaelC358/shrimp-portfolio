@@ -1,4 +1,4 @@
-import { Authenticator } from '@aws-amplify/ui-react';
+import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useEffect, useState } from 'react';
 import { uploadData, list } from 'aws-amplify/storage';
@@ -75,6 +75,8 @@ function App() {
     fetchPhotos();
   }, []);
 
+  const { user } = useAuthenticator((context) => [context.user]);
+
   return (
     <Router>
       <main>
@@ -100,9 +102,18 @@ function App() {
                   <li className="nav-item">
                     <Link className="nav-link active" aria-current="page" to="/">Home</Link>
                   </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/account">Login/Sign up</Link>
-                  </li>
+                  {user ? (
+                    <>
+                      <li className="nav-item">
+                        <Link className="nav-link" to="/account">My Files</Link>
+                      </li>
+                      <LogoutLink />
+                    </>
+                  ) : (
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/account">Login/Sign up</Link>
+                    </li>
+                  )}
                 </ul>
               </div>
             </div>
@@ -112,10 +123,7 @@ function App() {
 
         {/* Routing Setup */}
         <Routes>
-          {/* Home route, accessible to all users */}
           <Route path="/" element={<Home />} />
-
-          {/* Protected Account route, only accessible if logged in */}
           <Route
             path="/account"
             element={
@@ -167,13 +175,27 @@ function App() {
               </Authenticator>
             }
           />
-
-          {/* Catch-all route to redirect any unmatched routes to Home */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
     </Router>
   );
 }
+
+// LogoutLink component to handle the logout functionality
+const LogoutLink = () => {
+  const { signOut } = useAuthenticator(); // This will now work because it's used inside the Authenticator
+
+  return (
+    <li className="nav-item">
+      <a className="nav-link" href="#" onClick={async (e) => {
+        e.preventDefault(); // Prevent default anchor behavior
+        await signOut();
+      }}>
+        Logout
+      </a>
+    </li>
+  );
+};
 
 export default App;
