@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Navbar from './Navbar';
 import Home from './Home';
-import AccountPage from './AccountPage';  // New component import
+import AccountPage from './accountPage';
 
 function App() {
   const { user } = useAuthenticator((context) => [context.user]);

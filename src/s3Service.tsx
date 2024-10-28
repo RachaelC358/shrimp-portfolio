@@ -20,28 +20,29 @@ export const handleUpload = async (file: File, userId: string): Promise<void> =>
 };
 
 export const fetchPhotos = async (userId: string): Promise<Photo[]> => {
-  try {
-    const result = await list({
-      path: `picture-submissions/${userId}/`,
-      options: { listAll: true },
-    });
-
-    const items = result.items || [];
-    return await Promise.all(
-      items.map(async (item: any) => {
-        const linkToStorageFile = await getUrl({
-          path: `picture-submissions/${userId}/${item.path}`,
-        });
-
-        return {
-          path: item.path,
-          lastModified: item.lastModified,
-          downloadUrl: linkToStorageFile.url.toString(),
-        };
-      })
-    );
-  } catch (error) {
-    console.error("Error fetching photos:", error);
-    throw error;
-  }
-};
+    try {
+      const result = await list({
+        path: `picture-submissions/${userId}/`,
+        options: { listAll: true },
+      });
+  
+      const items = result.items || [];
+      return await Promise.all(
+        items.map(async (item: any) => {
+          const linkToStorageFile = await getUrl({
+            path: `picture-submissions/${userId}/${item.path}`,
+          });
+  
+          return {
+            path: item.path,
+            lastModified: item.lastModified,
+            downloadUrl: linkToStorageFile.url.toString(), // This generates a downloadable link.
+          };
+        })
+      );
+    } catch (error) {
+      console.error("Error fetching photos:", error);
+      throw error;
+    }
+  };
+  

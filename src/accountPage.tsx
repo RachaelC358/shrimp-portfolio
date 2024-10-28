@@ -2,46 +2,55 @@ import React, { useState, useEffect } from 'react';
 import { handleUpload, fetchPhotos, Photo } from './s3Service';
 
 interface AccountPageProps {
-  user: any;
+  user: {
+    userId?: string;
+    signInDetails?: {
+      loginId?: string;
+    };
+  };
 }
 
-function AccountPage({ user }: AccountPageProps) {
+const AccountPage: React.FC<AccountPageProps> = ({ user }) => {
   const [file, setFile] = useState<File | null>(null);
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     if (event.target.files && event.target.files[0]) {
       setFile(event.target.files[0]);
     }
   };
 
   const uploadFile = async (): Promise<void> => {
-    if (file && user) {
+    if (file && user?.userId) {
       try {
         await handleUpload(file, user.userId);
         console.log("File uploaded successfully.");
+        setFile(null);
+        loadPhotos();
       } catch (error) {
         console.error("Error uploading file:", error);
       }
     }
   };
 
-  useEffect(() => {
-    const loadPhotos = async (): Promise<void> => {
-      setLoading(true);
-      if (user) {
-        try {
-          const photos = await fetchPhotos(user.userId);
-          setPhotos(photos);
-        } catch (error) {
-          setError("Failed to load photos");
-        }
+  const loadPhotos = async (): Promise<void> => {
+    setLoading(true);
+    setError(null);
+    if (user?.userId) {
+      try {
+        const photos = await fetchPhotos(user.userId);
+        setPhotos(photos);
+      } catch (error) {
+        setError("Failed to load photos");
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
-    };
+    }
+  };
 
+  useEffect(() => {
     if (user) {
       loadPhotos();
     }
@@ -54,7 +63,7 @@ function AccountPage({ user }: AccountPageProps) {
           <h1>Your Home for Secure File Storage</h1>
         </div>
         <div className="greeting">
-          <p>Welcome, {user?.signInDetails?.loginId}!</p>
+          <p>Welcome, {user?.signInDetails?.loginId ?? "User"}!</p>
         </div>
       </div>
       <div className="bottom-body">
@@ -65,7 +74,9 @@ function AccountPage({ user }: AccountPageProps) {
             <div>
               <input type="file" onChange={handleChange} />
               <p>Max size: 10MB. Allowed types: PDF, DOCX, JPG</p>
-              <button onClick={uploadFile}>Upload</button>
+              <button onClick={uploadFile} disabled={!file}>
+                Upload
+              </button>
             </div>
           </div>
           <div className="downloads-box">
@@ -76,7 +87,7 @@ function AccountPage({ user }: AccountPageProps) {
               <ul>
                 {photos.map((photo, index) => (
                   <li key={index}>
-                    {photo.path} - 
+                    {photo.path} -{' '}
                     <a href={photo.downloadUrl} target="_blank" rel="noreferrer">
                       Download
                     </a>
@@ -91,6 +102,6 @@ function AccountPage({ user }: AccountPageProps) {
       </div>
     </div>
   );
-}
+};
 
 export default AccountPage;
