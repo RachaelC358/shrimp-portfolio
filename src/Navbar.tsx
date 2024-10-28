@@ -7,7 +7,7 @@ const Navbar = ({ user }: { user: any }) => {
 <nav className="navbar navbar-expand-sm bg-body-tertiary navbar-custom">
             <div className="container-fluid">
               <a className="navbar-brand navbar-zero-margin" href="/">
-                <img src="/shrimpLogo4.png" alt="Logo" height="100px" width="auto" />
+                <img src="/shrimpLogo4.png" alt="Logo" height="96px" width="auto" />
               </a>
               <button
                 className="navbar-toggler"
