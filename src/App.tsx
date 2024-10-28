@@ -50,10 +50,10 @@ function App() {
 
     useEffect(() => {
       const fetchPhotos = async () => {
-        if (DOWNLOADS_ENABLED && user) { // Check if user is defined
+        if (DOWNLOADS_ENABLED && user && user.userId) {  // Check for user.userId
           try {
             const result = await list({
-              path: `picture-submissions/${user.userId}/`, // Get user's folder
+              path: `picture-submissions/${user.userId}/`, // User's folder
               options: { listAll: true },
             });
     
@@ -62,32 +62,30 @@ function App() {
               items.map(async (item: any) => {
                 const linkToStorageFile = await getUrl({
                   path: `picture-submissions/${user.userId}/`,
-                  // Alternatively, path: ({identityId}) => `album/{identityId}/1.jpg`
                 });
-                  
+    
                 return {
                   path: item.path,
                   lastModified: item.lastModified,
-                  downloadUrl: linkToStorageFile.url.toString()
+                  downloadUrl: linkToStorageFile.url.toString(),
                 };
               })
             );
     
             setPhotos(mappedPhotos);
           } catch (err) {
-            console.error('Error fetching photos:', err);
-            setError('Failed to load photos');
+            console.error("Error fetching photos:", err);
+            setError("Failed to load photos");
           }
-        } else {
-          console.log("S3 requests are disabled.");
         }
-        setLoading(false); // Ensure loading is set to false after fetch
+        setLoading(false);  // Ensure loading is false after fetch
       };
     
-      if (user) { // Only call fetchPhotos if user is defined
+      if (user && user.userId) {  // Only call fetchPhotos if user is defined and has userId
         fetchPhotos();
       }
-    }, [user]); // Add user as a dependency
+    }, [user && user.userId]);  // Use specific user property to reduce unintended re-renders
+    
     
   
 
