@@ -111,7 +111,7 @@ const AccountPage: React.FC<AccountPageProps> = ({ user }) => {
       {photos.map((photo, index) => (
         <li className="file-list" key={index}>
             <div className="file-name">
-          {photo.path.split('/').pop()} -{" "}
+          {photo.path.split('/').pop()}
           </div>
           <div className="file-button">
           <button onClick={() => generateDownloadAndDownload(photo, index)}>

@@ -218,6 +218,7 @@ span{
   text-wrap: nowrap;
   display: flex;
   align-items: center;
+  text-align: center;
 }
 
 .file-name {
@@ -229,9 +230,10 @@ span{
   overflow: hidden;
 }
 
-/* .file-button {
-
-} */
+.file-button {
+  float:right;
+  margin-left: 8px;
+}
 
 
 
