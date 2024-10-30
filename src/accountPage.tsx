@@ -35,6 +35,20 @@ const AccountPage: React.FC<AccountPageProps> = ({ user }) => {
     }
   };
 
+
+
+const generateDownloadUrl = async (photo: Photo, index: number) => {
+  try {
+    const urlResult = await getUrl({ path: photo.path });
+    const updatedPhotos = [...photos];
+    updatedPhotos[index] = { ...photo, downloadUrl: urlResult.url.toString() };
+    setPhotos(updatedPhotos);
+  } catch (error) {
+    console.error("Error generating download URL:", error);
+  }
+};
+
+
   const loadPhotos = async (): Promise<void> => {
     setLoading(true);
     setError(null);
@@ -85,15 +99,21 @@ const AccountPage: React.FC<AccountPageProps> = ({ user }) => {
             {error && <p>{error}</p>}
             {photos.length > 0 ? (
               <ul>
-                {photos.map((photo, index) => (
-                  <li key={index}>
-                    {photo.path} -{' '}
+              {photos.map((photo, index) => (
+                <li key={index}>
+                  {photo.path} -{" "}
+                  {photo.downloadUrl ? (
                     <a href={photo.downloadUrl} target="_blank" rel="noreferrer">
                       Download
                     </a>
-                  </li>
-                ))}
-              </ul>
+                  ) : (
+                    <button onClick={() => generateDownloadUrl(photo, index)}>
+                      Generate Download Link
+                    </button>
+                  )}
+                </li>
+              ))}
+            </ul>
             ) : (
               !loading && <p>No photos available.</p>
             )}
