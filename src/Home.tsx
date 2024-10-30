@@ -16,28 +16,11 @@ const Home: React.FC = () => {
             create user-friendly websites with clean and functional designs. Click the 'Login/Sign Up' button at the top of this page to try it out! </p>
             </div>
             <div className='about-section-title'>
+
+              
   <h3>Responsive Page Designs</h3> 
   </div>
   <p>This site displays beautifully on both mobile and desktop screen sizes.</p>
-           
-        <div className='about-section-title'>
-        <h3>Focus on Security</h3> 
-        </div>
-      <ul>
-    
-    <li><strong>Data Encryption:</strong>
-    <div className='info-container'>
-        <li>All files are protected using AWS S3’s server-side encryption, applying advanced encryption standards to data at rest. Data is transmitted securely via HTTPS, preventing unauthorized access during upload and download.</li>
-        </div>
-    </li>
-
-    <li><strong>Access Control:</strong>
-    <div className='info-container'>
-        <li>User access is managed through AWS IAM, allowing only authenticated users to upload or retrieve files.
-       AWS Amplify manages user authentication, securing file access based on user permissions. Strict S3 bucket policies provide customized, secure access.</li>
-       </div>
-    </li>
-  </ul>
 
   <div className='about-section-title'>
             <h3>Tech Stack</h3>
@@ -53,6 +36,27 @@ const Home: React.FC = () => {
             <li>AWS IAM</li>
             </div>
             </div>
+           
+        <div className='about-section-title'>
+        <h3>Focus on Security</h3> 
+        </div>
+      <ul>
+    
+    <li><strong>Data Encryption:</strong>
+    <div className='info-container'>
+        <li>All files are protected using AWS S3’s server-side encryption, applying advanced encryption standards to data at rest. Data is transmitted securely via HTTPS, preventing unauthorized access during upload and download.</li>
+        </div>
+    </li>
+
+    <li><strong>Access Control:</strong>
+    <div className='info-container'>
+        <li>User access is managed through AWS IAM, allowing only authenticated users to upload or retrieve files.
+       AWS Amplify manages user authentication, securing file access based on user permissions. File download links are set to expire within a few minutes.</li>
+       </div>
+    </li>
+  </ul>
+
+
 
     </div>
     </div>

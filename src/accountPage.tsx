@@ -108,25 +108,20 @@ const AccountPage: React.FC<AccountPageProps> = ({ user }) => {
             {loading && <p>Loading photos...</p>}
             {error && <p>{error}</p>}
             {photos.length > 0 ? (
-              <ul>
-              {photos.map((photo, index) => (
-                <li key={index}>
-                  {photo.path} -{" "}
-                  {photo.downloadUrl ? (
-                    <a href={photo.downloadUrl} target="_blank" rel="noreferrer">
-                      Download
-                    </a>
-                  ) : (
-                    <button onClick={() => generateDownloadAndDownload(photo, index)}>
-  Download
-</button>
-                  )}
-                </li>
-              ))}
-            </ul>
-            ) : (
-              !loading && <p>No photos available.</p>
-            )}
+  <ul>
+    {photos.map((photo, index) => (
+      <li key={index}>
+        {photo.path} -{" "}
+        <button onClick={() => generateDownloadAndDownload(photo, index)}>
+          Download
+        </button>
+      </li>
+    ))}
+  </ul>
+) : (
+  !loading && <p>No photos available.</p>
+)}
+
           </div>
         </div>
       </div>
