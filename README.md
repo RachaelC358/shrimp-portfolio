@@ -1,20 +1,24 @@
-## AWS Amplify React+Vite Starter Template
+# About this Project
 
-This repository provides a starter template for creating applications using React+Vite and AWS Amplify, emphasizing easy setup for authentication, API, and database capabilities.
+You've found Rachael Carpenter's file storage web app project! This is a demo project showcasing my practical experience with AWS cloud and ability to create user-friendly websites with clean, screen-size responsive designs. Click the 'Login/Sign Up' button at the top of this page to try it out!
 
-## Overview
+## Tech Stack
 
-This template equips you with a foundational React application integrated with AWS Amplify, streamlined for scalability and performance. It is ideal for developers looking to jumpstart their project with pre-configured AWS services like Cognito, AppSync, and DynamoDB.
+- TypeScript
+- React
+- Bootstrap and custom CSS
+- AWS Amplify
+- AWS S3
+- AWS IAM
 
-## Features
+## Focus on Security
 
-- **Authentication**: Setup with Amazon Cognito for secure user authentication.
-- **API**: Ready-to-use GraphQL endpoint with AWS AppSync.
-- **Database**: Real-time database powered by Amazon DynamoDB.
+- **Data Encryption:**
+  - All files are protected using AWS S3’s server-side encryption, applying advanced encryption standards to data at rest. Data is transmitted securely via HTTPS, preventing unauthorized access during upload and download.
 
-## Deploying to AWS
+- **Access Control:**
+  - User access is managed through AWS IAM, allowing only authenticated users to upload or retrieve files. AWS Amplify manages user authentication, securing file access based on user permissions.
 
-For detailed instructions on deploying your application, refer to the [deployment section](https://docs.amplify.aws/react/start/quickstart/#deploy-a-fullstack-app-to-aws) of our documentation.
 
 ## Security
 
