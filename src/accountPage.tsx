@@ -29,13 +29,16 @@ const AccountPage: React.FC<AccountPageProps> = ({ user }) => {
       try {
         await handleUpload(file, user.userId);
         console.log("File uploaded successfully.");
-        setFile(null);
-        loadPhotos();
+        setFile(null); // Clear the file input
+  
+        // Reload the photos list
+        await loadPhotos();
       } catch (error) {
         console.error("Error uploading file:", error);
       }
     }
   };
+  
 
 
 
