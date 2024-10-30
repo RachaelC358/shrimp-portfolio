@@ -12,7 +12,7 @@ const Home: React.FC = () => {
       </div>
       <div className="home-paragraph section">
         <div className='info-container'>
-        <p>I'm Rachael Carpenter, full stack software engineer, and this is my file storage web app project! I made it to build on my practical experience with AWS while showcaseing my ability to 
+        <p>You've found Rachael Carpenter's file storage web app project! This is a demo project showcasing my practical experience with AWS cloud and ability to 
             create user-friendly websites with clean and functional designs. Click the 'Login/Sign Up' button at the top of this page to try it out! </p>
             </div>
             <div className='about-section-title'>
@@ -51,7 +51,7 @@ const Home: React.FC = () => {
     <li><strong>Access Control:</strong>
     <div className='info-container'>
         <li>User access is managed through AWS IAM, allowing only authenticated users to upload or retrieve files.
-       AWS Amplify manages user authentication, securing file access based on user permissions. File download links are set to expire within a few minutes.</li>
+       AWS Amplify manages user authentication, securing file access based on user permissions.</li>
        </div>
     </li>
   </ul>
