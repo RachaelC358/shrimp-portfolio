@@ -225,14 +225,17 @@ span{
   text-wrap: wrap;
   max-width: 180px;
   min-width: 180px;
-  float:left;
   margin-left: 8px;
   overflow: hidden;
+  display: inline-block;
+
+  vertical-align: middle;
 }
 
 .file-button {
-  float:right;
   margin-left: 8px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 
