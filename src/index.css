@@ -217,6 +217,7 @@ span{
 .file-list {
   text-wrap: nowrap;
   display: flex;
+  align-items: center;
 }
 
 .file-name {
@@ -225,6 +226,7 @@ span{
   min-width: 180px;
   float:left;
   margin-left: 8px;
+  overflow: hidden;
 }
 
 /* .file-button {
