@@ -1,4 +1,4 @@
-import { uploadData, list, getUrl } from 'aws-amplify/storage';
+import { uploadData, list } from 'aws-amplify/storage';
 
 export interface Photo {
   path: string;
