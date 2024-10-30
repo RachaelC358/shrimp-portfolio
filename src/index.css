@@ -215,13 +215,16 @@ span{
 }
 
 .file-list {
-  text-wrap: wrap;
+  text-wrap: nowrap;
+  display: flex;
 }
 
 .file-name {
   text-wrap: wrap;
   max-width: 180px;
   min-width: 180px;
+  float:left;
+  margin-left: 8px;
 }
 
 /* .file-button {
