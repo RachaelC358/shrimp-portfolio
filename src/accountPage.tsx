@@ -38,16 +38,25 @@ const AccountPage: React.FC<AccountPageProps> = ({ user }) => {
 
 
 
-const generateDownloadUrl = async (photo: Photo, index: number) => {
-  try {
-    const urlResult = await getUrl({ path: photo.path });
-    const updatedPhotos = [...photos];
-    updatedPhotos[index] = { ...photo, downloadUrl: urlResult.url.toString() };
-    setPhotos(updatedPhotos);
-  } catch (error) {
-    console.error("Error generating download URL:", error);
-  }
-};
+  const generateDownloadAndDownload = async (photo: Photo, index: number) => {
+    try {
+      const urlResult = await getUrl({ path: photo.path });
+      const updatedPhotos = [...photos];
+      updatedPhotos[index] = { ...photo, downloadUrl: urlResult.url.toString() };
+      setPhotos(updatedPhotos);
+  
+      // Create a temporary link element and trigger the download
+      const link = document.createElement("a");
+      link.href = urlResult.url.toString();
+      link.download = photo.path.split('/').pop() || 'file'; // Set default filename if path is empty
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error("Error generating download URL:", error);
+    }
+  };
+  
 
 
   const loadPhotos = async (): Promise<void> => {
@@ -75,7 +84,7 @@ const generateDownloadUrl = async (photo: Photo, index: number) => {
     <div className="body-container">
       <div className="top-body">
         <div className="page-header">
-          <h1>Your Home for Secure File Storage</h1>
+          <h1>File Storage Account</h1>
         </div>
         <div className="greeting">
           <p>Welcome, {user?.signInDetails?.loginId ?? "User"}!</p>
@@ -85,7 +94,7 @@ const generateDownloadUrl = async (photo: Photo, index: number) => {
         <div className="container flex-direction">
           <div className="uploads-box">
             <h2>Upload Files</h2>
-            <p>Select a file to upload securely.</p>
+            <p>Select a file to upload.</p>
             <div>
               <input type="file" onChange={handleChange} />
               <p>Max size: 10MB. Allowed types: PDF, DOCX, JPG</p>
@@ -108,9 +117,9 @@ const generateDownloadUrl = async (photo: Photo, index: number) => {
                       Download
                     </a>
                   ) : (
-                    <button onClick={() => generateDownloadUrl(photo, index)}>
-                      Generate Download Link
-                    </button>
+                    <button onClick={() => generateDownloadAndDownload(photo, index)}>
+  Download
+</button>
                   )}
                 </li>
               ))}
