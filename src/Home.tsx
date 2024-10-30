@@ -13,7 +13,7 @@ const Home: React.FC = () => {
       <div className="home-paragraph section">
         <div className='info-container'>
         <p>You've found Rachael Carpenter's file storage web app project! This is a demo project showcasing my practical experience with AWS cloud and ability to 
-            create user-friendly websites with clean and functional designs. Click the 'Login/Sign Up' button at the top of this page to try it out! </p>
+            create user-friendly websites with clean, screen-size responsive designs. Click the 'Login/Sign Up' button at the top of this page to try it out! </p>
             </div>
            
   <div className='about-section-title'>
@@ -49,12 +49,8 @@ const Home: React.FC = () => {
        </div>
     </li>
   </ul>
-
-
-
     </div>
     </div>
-
   );
 };
 

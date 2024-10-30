@@ -21,6 +21,7 @@ const AccountPage: React.FC<AccountPageProps> = ({ user }) => {
     if (event.target.files && event.target.files[0]) {
       setFile(event.target.files[0]);
     }
+    console.log("here");
   };
 
   const uploadFile = async (): Promise<void> => {

@@ -9,6 +9,7 @@ function Upload() {
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const selectedFile = event.target.files ? event.target.files[0] : null;
         setFile(selectedFile);
+        console.log("over here");
     };
 
     const handleUpload = async () => {
@@ -22,6 +23,7 @@ function Upload() {
                     data: file,
                 });
                 console.log('File uploaded successfully');
+                console.log('over over here');
             } catch (error) {
                 console.error('File upload failed:', error);
             }
