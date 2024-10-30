@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { handleUpload, fetchPhotos, Photo } from './s3Service';
+import { getUrl } from 'aws-amplify/storage';
 
 interface AccountPageProps {
   user: {
