@@ -3,7 +3,7 @@ import { uploadData } from 'aws-amplify/storage';
 import { useAuthenticator } from '@aws-amplify/ui-react';
 
 function Upload() {
-    const { user } = useAuthenticator(); // Access user info from the Authenticator context
+    const { user } = useAuthenticator(); 
     const [file, setFile] = useState<File | null>(null);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -12,14 +12,14 @@ function Upload() {
     };
 
     const handleUpload = async () => {
-        if (file && user) {  // Ensure file is not null and user is authenticated
-            const userFolder = user.userId; // Use user's unique identifier (Cognito sub)
-            const filePath = `picture-submissions/${userFolder}/${file.name}`; // Path includes user folder
+        if (file && user) {  
+            const userFolder = user.userId; 
+            const filePath = `picture-submissions/${userFolder}/${file.name}`; 
     
             try {
                 await uploadData({
-                    path: filePath,  // Upload to user-specific folder
-                    data: file,      // Pass the file as the data
+                    path: filePath,  
+                    data: file,
                 });
                 console.log('File uploaded successfully');
             } catch (error) {

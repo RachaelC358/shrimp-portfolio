@@ -45,10 +45,9 @@ const AccountPage: React.FC<AccountPageProps> = ({ user }) => {
       updatedPhotos[index] = { ...photo, downloadUrl: urlResult.url.toString() };
       setPhotos(updatedPhotos);
   
-      // Create a temporary link element and trigger the download
       const link = document.createElement("a");
       link.href = urlResult.url.toString();
-      link.download = photo.path.split('/').pop() || 'file'; // Set default filename if path is empty
+      link.download = photo.path.split('/').pop() || 'file'; 
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -104,25 +103,25 @@ const AccountPage: React.FC<AccountPageProps> = ({ user }) => {
             </div>
           </div>
           <div className="downloads-box">
-            <h2>Stored Files</h2>
-            {loading && <p>Loading photos...</p>}
-            {error && <p>{error}</p>}
-            {photos.length > 0 ? (
-  <ul>
-    {photos.map((photo, index) => (
-      <li key={index}>
-        {photo.path} -{" "}
-        <button onClick={() => generateDownloadAndDownload(photo, index)}>
-          Download
-        </button>
-      </li>
-    ))}
-  </ul>
-) : (
-  !loading && <p>No photos available.</p>
-)}
+  <h2>Stored Files</h2>
+  {loading && <p>Loading files...</p>}
+  {error && <p>{error}</p>}
+  {photos.length > 0 ? (
+    <ul>
+      {photos.map((photo, index) => (
+        <li key={index}>
+          {photo.path.split('/').pop()} -{" "}
+          <button onClick={() => generateDownloadAndDownload(photo, index)}>
+            Download
+          </button>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    !loading && <p>No files available.</p>
+  )}
+</div>
 
-          </div>
         </div>
       </div>
     </div>
