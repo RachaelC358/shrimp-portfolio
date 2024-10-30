@@ -1,6 +1,7 @@
 # About this Project
 
-You've found Rachael Carpenter's file storage web app project! This is a demo project showcasing my practical experience with AWS cloud and ability to create user-friendly websites with clean, screen-size responsive designs. Click the 'Login/Sign Up' button at the top of this page to try it out!
+You've found Rachael Carpenter's file storage web app project! This is a demo project showcasing my practical experience with AWS cloud and ability to create user-friendly websites with clean, screen-size responsive designs. Visit the website: [shrimp-secure-cache.com](https://shrimp-secure-cache.com)
+
 
 ## Tech Stack
 
