@@ -15,13 +15,7 @@ const Home: React.FC = () => {
         <p>You've found Rachael Carpenter's file storage web app project! This is a demo project showcasing my practical experience with AWS cloud and ability to 
             create user-friendly websites with clean and functional designs. Click the 'Login/Sign Up' button at the top of this page to try it out! </p>
             </div>
-            <div className='about-section-title'>
-
-              
-  <h3>Responsive Page Designs</h3> 
-  </div>
-  <p>This site displays beautifully on both mobile and desktop screen sizes.</p>
-
+           
   <div className='about-section-title'>
             <h3>Tech Stack</h3>
             </div>
