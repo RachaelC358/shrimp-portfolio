@@ -105,7 +105,7 @@ const AccountPage: React.FC<AccountPageProps> = ({ user }) => {
             <p>Select a file to upload.</p>
             <div>
               <input type="file" onChange={handleChange} />
-              <p>Max size: 10MB. Allowed types: PDF, DOCX, JPG</p>
+              <p>Max size: 5 GB.</p>
               <button onClick={uploadFile} disabled={!file}>
                 Upload
               </button>
