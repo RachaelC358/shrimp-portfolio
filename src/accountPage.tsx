@@ -29,20 +29,22 @@ const AccountPage: React.FC<AccountPageProps> = ({ user }) => {
       try {
         await handleUpload(file, user.userId);
         console.log("File uploaded successfully.");
-  
-        setFile(null); 
-
-        (document.querySelector('input[type="file"]') as HTMLInputElement).value = '';
+        setFile(null); // Clear the file input
         
-        await loadPhotos();
+        // Clear the input field visually
+        (document.querySelector('input[type="file"]') as HTMLInputElement).value = '';
+  
+        // Delay file list loading by 3 seconds
+        setTimeout(() => {
+          loadPhotos();
+        }, 3000);
+        
       } catch (error) {
         console.error("Error uploading file:", error);
       }
     }
   };
   
-  
-
 
 
   const generateDownloadAndDownload = async (photo: Photo, index: number) => {
