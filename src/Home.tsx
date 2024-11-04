@@ -1,6 +1,13 @@
 import React from 'react';
+import ImageGallery from './ImageGallery';
+
 
 const Home: React.FC = () => {
+  const galleryImages = [
+    { src: '/mobileShrimp.png', caption: 'Mobile Screen Size' },
+    { src: '/shrimpDesktop.png', caption: 'Desktop Screen Size' },
+  ];
+
   return (
     <div>
           <div className="body-container">
@@ -30,6 +37,21 @@ const Home: React.FC = () => {
             <li>AWS IAM</li>
             </div>
             </div>
+
+            <div className='about-section-title'>
+            <h3>Features</h3>
+            </div>
+            <div className="bullet-container">
+            <div className="bullet-group">
+            <li>User Account Creation and Authentication </li>
+            <li>User Dashboard </li>  
+            <li>File Upload </li>
+            <li>List of Stored Files</li>
+            <li>Download Links for Stored File Retreival</li>
+            </div>
+            </div>
+
+            <ImageGallery title="Responsive Page Designs" images={galleryImages} />
            
         <div className='about-section-title'>
         <h3>Focus on Security</h3> 

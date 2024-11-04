@@ -233,3 +233,42 @@ span{
   display: inline-block;
 }
 
+.image-gallery {
+  margin-top: 30px;
+  background-color: lightpink; /* light colored background */
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.image-item {
+  height: 250px; /* Set a consistent width for all images */
+/* Set a consistent height for all images */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black; /* Black padding */
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.image-item img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; 
+  background-color: black; 
+}
+
+.caption {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #555;
+}
+
+
