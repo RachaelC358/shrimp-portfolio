@@ -248,12 +248,11 @@ span{
 }
 
 .image-item {
-  height: 250px; /* Set a consistent width for all images */
-/* Set a consistent height for all images */
+  height: 250px; 
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: black; /* Black padding */
+  background-color: lightpink; 
   border-radius: 4px;
   overflow: hidden;
 }
