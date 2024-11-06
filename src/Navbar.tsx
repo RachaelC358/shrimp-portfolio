@@ -25,6 +25,9 @@ const Navbar = ({ user }: { user: any }) => {
                   <li className="nav-item">
                     <Link className="nav-link active" aria-current="page" to="/">About</Link>
                   </li>
+                  <li className="nav-item">
+                    <Link className="nav-link active" aria-current="page" to="/contact">Contact</Link>
+                  </li>
                   {user ? (
                     <>
                       <li className="nav-item">

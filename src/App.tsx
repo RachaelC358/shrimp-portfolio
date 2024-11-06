@@ -5,6 +5,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Navbar from './Navbar';
 import Home from './Home';
 import AccountPage from './accountPage';
+import Contact from './Contact';
 
 function App() {
   const { user } = useAuthenticator((context) => [context.user]);
@@ -18,6 +19,7 @@ function App() {
         <div className="navbar-border"></div>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<Contact />} />
           <Route
             path="/account"
             element={
