@@ -19,8 +19,15 @@ const Contact: React.FC = () => {
             <a href="https://www.linkedin.com/in/rachael-carpenter-csengineer/" style={{ color: 'blue', textDecoration: 'underline' }}>
             https://www.linkedin.com/in/rachael-carpenter-csengineer/
       </a>
+  
+    <div className='about-section-title'>
+            <h3>Github</h3>
+            </div>
+            <a href="https://github.com/RachaelC358" style={{ color: 'blue', textDecoration: 'underline' }}>
+            https://github.com/RachaelC358
+      </a>
     </div>
-    </div>
+  </div>
   );
 };
 
