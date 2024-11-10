@@ -47,7 +47,7 @@ const Home: React.FC = () => {
             <li>User Dashboard </li>  
             <li>File Upload </li>
             <li>List of Stored Files</li>
-            <li>Download Links for Stored File Retreival</li>
+            <li>Download Links for Stored File Retrieval</li>
             </div>
             </div>
 
