@@ -16,7 +16,6 @@ function App() {
         <header>
           <Navbar user={user} />
         </header>
-        <div className="navbar-border"></div>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />

@@ -12,9 +12,11 @@ const Home: React.FC = () => {
     <div>
           <div className="body-container">
                         <div className="top-body">
-                        <div className="page-header-about">
-      <h1 >About this Project</h1>
-      </div>
+                      
+                        <div className="page-header-about-home" id="parallax-header">
+  <h1>About this Project</h1>
+</div>
+   
       </div>
       </div>
       <div className="home-paragraph section">

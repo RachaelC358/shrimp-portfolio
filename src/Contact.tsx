@@ -5,6 +5,7 @@ const Contact: React.FC = () => {
 
   return (
     <div>
+      <div className="navbar-border"></div>
           <div className="body-container">
                         <div className="top-body">
                         <div className="page-header-about">
