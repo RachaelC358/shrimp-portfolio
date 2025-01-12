@@ -14,14 +14,14 @@ const Home: React.FC = () => {
                         <div className="top-body">
                       
                         <div className="page-header-about-home" id="parallax-header">
-  <h1>About this Project</h1>
+  <h1>Welcome</h1>
 </div>
    
       </div>
       </div>
       <div className="home-paragraph section">
         <div className='info-container'>
-        <p>You've found Rachael Carpenter's file storage web app project! This is a demo project showcasing my practical experience with AWS cloud and ability to 
+        <p>You've found Rachael Carpenter's file storage web application! This is a project showcasing my practical experience with AWS cloud and ability to 
             create user-friendly websites with clean, responsive designs. Click the 'Login/Sign Up' button at the top of this page to try it out! </p>
             </div>
            
@@ -74,6 +74,7 @@ const Home: React.FC = () => {
     </li>
   </ul>
     </div>
+    <div className='end-page-spacer'/>
     </div>
   );
 };

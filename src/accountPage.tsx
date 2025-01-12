@@ -95,7 +95,7 @@ const AccountPage: React.FC<AccountPageProps> = ({ user }) => {
           <h1>File Storage Account</h1>
         </div>
         <div className="greeting">
-          <p>Welcome, {user?.signInDetails?.loginId ?? "User"}!</p>
+          <p>Hello, {user?.signInDetails?.loginId ?? "User"}!</p>
         </div>
       </div>
       <div className="bottom-body">

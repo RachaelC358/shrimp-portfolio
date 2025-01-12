@@ -1,6 +1,13 @@
  body {
   font-family: 'Montserrat', sans-serif;
+  min-height: 100vh; 
+  display: flex;
+  flex-direction: column;
 } 
+
+main {
+  flex: 1; 
+}
 
 .navbar-custom {
   color: #FFFFFF !important;
@@ -181,9 +188,9 @@ span{
 }
 
 .page-header-about-home {
-  margin-top: 50px;
+  margin-top: 0px;
   text-align: center;
-  min-height: 200px; 
+  min-height: 300px; 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -290,6 +297,11 @@ span{
   margin-top: 8px;
   font-size: 14px;
   color: #555;
+}
+
+.end-page-spacer{
+  height: 150px; 
+  background: transparent; 
 }
 
 
