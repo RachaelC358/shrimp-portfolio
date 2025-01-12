@@ -12,18 +12,6 @@ You've found Rachael Carpenter's file storage web app project! This is a demo pr
 - AWS S3
 - AWS IAM
 
-## Focus on Security
-
-- **Data Encryption:**
-  - All files are protected using AWS S3’s server-side encryption, applying advanced encryption standards to data at rest. Data is transmitted securely via HTTPS, preventing unauthorized access during upload and download.
-
-- **Access Control:**
-  - User access is managed through AWS IAM, allowing only authenticated users to upload or retrieve files. AWS Amplify manages user authentication, securing file access based on user permissions.
-
-
-## Security
-
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
 
 ## License
 
