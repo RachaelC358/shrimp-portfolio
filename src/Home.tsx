@@ -53,6 +53,11 @@ const Home: React.FC = () => {
             </div>
             </div>
 
+            <div className='about-section-title'>
+            <h3>Solution Architecture Diagram</h3>
+            <img src="/SAD.png" alt="Logo" height="700px" width="auto" />
+            </div>
+
             <ImageGallery title="Responsive Page Designs" images={galleryImages} />
            
         <div className='about-section-title'>
@@ -73,7 +78,9 @@ const Home: React.FC = () => {
        </div>
     </li>
   </ul>
-    </div>
+    
+    
+            </div>
     <div className='end-page-spacer'/>
     </div>
   );
