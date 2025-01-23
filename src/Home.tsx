@@ -14,7 +14,7 @@ const Home: React.FC = () => {
                         <div className="top-body">
                       
                         <div className="page-header-about-home" id="parallax-header">
-  <h1>Welcome</h1>
+  <h1>The world is your shrimp cocktail</h1>
 </div>
    
       </div>
