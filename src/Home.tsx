@@ -14,7 +14,10 @@ const Home: React.FC = () => {
                         <div className="top-body">
                       
                         <div className="page-header-about-home" id="parallax-header">
-  <h1>The world is your shrimp cocktail</h1>
+                        <h1>secure file storage in the cloud?
+<br/>
+The world is your shrimp cocktail
+                        </h1>
 </div>
    
       </div>
@@ -25,20 +28,7 @@ const Home: React.FC = () => {
             create user-friendly websites with clean, responsive designs. Click the 'Login/Sign Up' button at the top of this page to try it out! </p>
             </div>
            
-  <div className='about-section-title'>
-            <h3>Tech Stack</h3>
-            </div>
-            <div className="bullet-container">
-            <div className="bullet-group">
-           
-            <li>Typescript </li>
-            <li>React</li>
-            <li>Bootstrap and custom CSS</li>
-            <li>AWS Amplify</li>
-            <li>AWS S3</li>
-            <li>AWS IAM</li>
-            </div>
-            </div>
+
 
             <div className='about-section-title'>
             <h3>Features</h3>
@@ -50,6 +40,21 @@ const Home: React.FC = () => {
             <li>File Upload </li>
             <li>List of Stored Files</li>
             <li>Download Links for Stored File Retrieval</li>
+            </div>
+            </div>
+
+            <div className='about-section-title'>
+            <h3>Tech Stack</h3>
+            </div>
+            <div className="bullet-container">
+            <div className="bullet-group">
+           
+            <li>Typescript </li>
+            <li>React</li>
+            <li>Bootstrap and custom CSS</li>
+            <li>AWS Amplify</li>
+            <li>AWS S3</li>
+            <li>AWS IAM</li>
             </div>
             </div>
 

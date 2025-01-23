@@ -197,12 +197,13 @@ span{
   justify-content: center;
   position: relative;
   color: white; 
-  background-image: url('/4.png');
+  background-image: url('/B.png');
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
+  text-shadow: 2px 2px 8px navy;
 }
 
 .page-header-about h1 {
